@@ -14,6 +14,8 @@ const CustomText = ({
         ...customStyle,
         color: textColor,
         fontFamily: fontFamily,
+        padding:0,
+        margin:0
       }}>
       {text}
     </Text>

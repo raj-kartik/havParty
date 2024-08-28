@@ -49,15 +49,10 @@ const CustomIcon = ({type, name, size = 24, color = '#000', customStyle}) => {
       name={name}
       size={size}
       color={color}
-      style={[styles, customStyle]}
+      style={customStyle}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  icon: {
-    margin: 20,
-  },
-});
 
 export default CustomIcon;

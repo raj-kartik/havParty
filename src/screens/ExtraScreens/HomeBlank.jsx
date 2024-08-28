@@ -8,9 +8,10 @@ import Planner from '../bottom/Planner';
 import Favorite from '../bottom/Favorite';
 import Profile from '../bottom/Profile';
 import CustomIcon from '../../Custom/CustomIcon';
-import {moderateScale} from '../../Custom/Matrix';
+import {horizontalScale, moderateScale, screenWidth, verticalScale} from '../../Custom/Matrix';
 import {Theme} from '../../theme/Color';
 import * as Animatable from 'react-native-animatable';
+import LinearGradient from 'react-native-linear-gradient';
 
 const HomeBlank = ({navigation}) => {
   const TabArr = [
@@ -60,10 +61,12 @@ const HomeBlank = ({navigation}) => {
     },
   ];
 
+  
+
   const TabButton = props => {
     const animate1 = {
       0: {scale: 1, translateY: 0},
-      1: {scale: 1.2, translateY:moderateScale(-20)},
+      1: {scale: 1.2, translateY:moderateScale(-10)},
     };
     const animate2 = {
       0: {scale: 1.2, translateY: moderateScale(0)},
@@ -71,8 +74,6 @@ const HomeBlank = ({navigation}) => {
     };
     const circle1 = {
       0: {scale: 0},
-      0.3: {scale: 0.2},
-      0.5: {scale: 0.3},
       0.8: {scale: 0.7},
       1: {scale: 1},
     };
@@ -83,13 +84,32 @@ const HomeBlank = ({navigation}) => {
     const viewRef = useRef(null);
     const circleRef = useRef(null);
 
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin:horizontalScale(20)
+      },
+      Btn: {
+        width: moderateScale(50),
+        height: moderateScale(50),
+        borderRadius: moderateScale(25),
+        borderWidth: 4,
+        borderColor: Theme.primary,
+        backgroundColor: !focused?Theme.primary:Theme.secondary,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+    });
+
     useEffect(() => {
       if (focused) {
         viewRef.current.animate(animate1);
         circleRef.current.animate(circle1)
       } else {
-        viewRef.current.animate(animate2);
-        circleRef.current.animate(circle2)
+        // viewRef.current.animate(animate2);
+        // circleRef.current.animate(circle2)
       }
     }, [focused]);
     return (
@@ -101,12 +121,15 @@ const HomeBlank = ({navigation}) => {
           ref={viewRef}
           style={styles.Btn}
           animation="zoomIn"
-          duration={800}>
+          duration={300}>
+            
+          
           <Animatable.View
             ref={circleRef}
             style={{
               ...StyleSheet.absoluteFillObject,
-              backgroundColor: Theme.primary,
+              backgroundColor:focused?Theme.secondary:Theme.primary,
+              borderColor:focused?Theme.primary:Theme.secondary,
               borderRadius: moderateScale(25),
             }}
           />
@@ -114,7 +137,7 @@ const HomeBlank = ({navigation}) => {
             type={item.type}
             name={item.icon}
             size={30}
-            color={focused ? Theme.penta : Theme.second.secondary}
+            color={"#fff"}
           />
         </Animatable.View>
       </TouchableOpacity>
@@ -128,14 +151,15 @@ const HomeBlank = ({navigation}) => {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
-            height: moderateScale(50),
-            position: 'absolute',
+            height: moderateScale(60),
             bottom: moderateScale(16),
             left: moderateScale(16),
             right: moderateScale(16),
             borderRadius: moderateScale(10),
-            backgroundColor:"#fff",
-            borderColor:"#000"
+            backgroundColor:Theme.black.hexa,
+            borderColor:"#000",
+            width:screenWidth*0.9,
+            marginTop:moderateScale(20)
           },
         }}>
         {TabArr.map(item => {
@@ -147,7 +171,7 @@ const HomeBlank = ({navigation}) => {
               options={{
                 tabBarShowLabel: false,
                 tabBarIcon: ({color, focused}) => (
-                  <CustomIcon type={item.type} name={item.icon} size={30} />
+                  <CustomIcon type={item.type} name={item.icon} size={30}  />
                 ),
                 tabBarButton: props => <TabButton {...props} item={item} />,
               }}
@@ -161,20 +185,4 @@ const HomeBlank = ({navigation}) => {
 
 export default HomeBlank;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  Btn: {
-    width: moderateScale(50),
-    height: moderateScale(50),
-    borderRadius: moderateScale(25),
-    borderWidth: 3,
-    borderColor: Theme.penta,
-    backgroundColor:Theme.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+

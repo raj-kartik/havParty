@@ -1,16 +1,17 @@
 import React from 'react';
-import {Pressable, View, StyleSheet} from 'react-native'
+import {Pressable, View, StyleSheet} from 'react-native';
 import {Theme} from '../theme/Color';
 import CustomIcon from './CustomIcon';
 import CustomText from './CustomText';
 import {moderateScale} from './Matrix';
 import LinearGradient from 'react-native-linear-gradient';
-import { Fonts } from '../utils/Fonts';
+import {Fonts} from '../utils/Fonts';
 
 const CustomButton = ({
   onPress,
   title,
   customStyle = {},
+  textColor = '#000',
   textStyle = {},
   iconType,
   iconName,
@@ -23,16 +24,14 @@ const CustomButton = ({
   const colors = Theme;
   return (
     <LinearGradient
-        colors={[Theme.secondary,Theme.quartery]}
-        style={[customStyle]}
-        start={{ x: 0, y: 0 }}
-    >
+      colors={[Theme.black.hexa, Theme.secondary]}
+      style={[customStyle]}
+      start={{x: 0.5, y: -0.1}}
+      end={{x: 0.5, y: 1.5}}>
       <Pressable
         onPress={onPress}
         disabled={disabled}
-        style={({pressed}) => [
-          styles.button
-        ]}>
+        style={({pressed}) => [styles.button]}>
         <View style={[styles.content]}>
           {iconName && iconPosition === 'left' && (
             <CustomIcon
@@ -44,10 +43,10 @@ const CustomButton = ({
             />
           )}
           <CustomText
-            customStyle={{ fontSize: moderateScale(16)}}
+            customStyle={{fontSize: moderateScale(16)}}
             fontFamily={Fonts.bold}
             text={title}
-            textColor={'#000'}
+            textColor={textColor}
           />
           {iconName && iconPosition === 'right' && (
             <CustomIcon

@@ -1,10 +1,17 @@
 export const Theme = {
     primary:"#000",
-    secondary:"#f77062",
+    secondary:"#9e1910",
     tertiary:"#fe5196",
-    quartery:"#FF6B95",
+    quartery:"#909090",
     penta:"#FFC796",
     primaryBlur:"rgba(0,0,0,0.1)",
+    black:{
+        primary:"#000",
+        secondary:"#101010",
+        tertiary:"#484848",
+        penta:"	#707070",
+        hexa:"#2b2b2b"
+    },
 
     error:{
         primary:"#ff0000",
@@ -14,7 +21,10 @@ export const Theme = {
         secondary:"#ffc107",
         bootstrap:"#E4A11B"
     },
-
+    icon:{
+        primary:"#ffd250",
+        secondary:"#fff",
+    },
     second:{
         primary:"#c4c5c7",
         secondary:"#dcdddf",

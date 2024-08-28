@@ -4,4 +4,34 @@ export const Fonts = {
     light:"Comfortaa-Light",
     medium:"Comfortaa-Medium",
     semiBold:"Comfortaa-SemiBold",
+    satisfy:"Satisfy-Regular",
+    Arsenal:{
+        Bold:"ArsenalSC-Bold",
+        Regular:"ArsenalSC-Regular"
+    },
+    Haniston:"Hamiston Signature",
+    JosefinSans:{
+        Bold:"JosefinSans-Bold",
+        Regular:"JosefinSans-Regular",
+        SemiBold:"JosefinSans-SemiBold",
+        Thin:"JosefinSans-Thin",
+        Variable:"JosefinSans-VariableFont_wght",
+        light:"JosefinSans-Light",
+        Elight:"JosefinSans-Light",
+        Medium:"JosefinSans-Medium"
+    },
+    Superstar:{
+        primary:"SuperstarX-5E7G",
+        secondary:"SuperstarX-Y82a"
+    },
+    ArOne:{
+        Bold:"AROneSans-Bold",
+        Medium:"AROneSans-Medium",
+        Regular:"AROneSans-Regular",
+        SemiBold:"AROneSans-SemiBold",
+        Variable:"AROneSans-VariableFont_ARRR,wght"
+    },
+    Anek:{
+        SemiBold:"AnekOdia_Condensed-SemiBold"
+    }
 }
