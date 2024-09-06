@@ -9,7 +9,7 @@ const AccSetting = () => {
     <Container>
         <CustomHeader
             title="Account Setting"
-            primary={Theme.secondary}
+            primary={Theme.red.secondary}
         />
     </Container>
   )

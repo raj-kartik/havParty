@@ -10,7 +10,7 @@ const Notification = () => {
     <Container>
         <CustomHeader
             title="Notifcation"
-            primary={Theme.secondary}
+            primary={Theme.red.secondary}
         />
     </Container>
   )

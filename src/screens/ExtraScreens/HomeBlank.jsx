@@ -6,12 +6,11 @@ import Home from '../bottom/Home';
 import Search from '../bottom/Search';
 import Planner from '../bottom/Planner';
 import Favorite from '../bottom/Favorite';
-import Profile from '../bottom/Profile';
 import CustomIcon from '../../Custom/CustomIcon';
 import {horizontalScale, moderateScale, screenWidth, verticalScale} from '../../Custom/Matrix';
 import {Theme} from '../../theme/Color';
 import * as Animatable from 'react-native-animatable';
-import LinearGradient from 'react-native-linear-gradient';
+import Bio from '../bottom/Bio';
 
 const HomeBlank = ({navigation}) => {
   const TabArr = [
@@ -46,8 +45,8 @@ const HomeBlank = ({navigation}) => {
       id: 4,
       route: 'Favorite',
       label: 'Favorite',
-      type: 'Ionicons',
-      icon: 'heart-circle',
+      type: 'AntDesign',
+      icon: 'hearto',
       component: Favorite,
     },
 
@@ -57,7 +56,7 @@ const HomeBlank = ({navigation}) => {
       label: 'Profile',
       type: 'FontAwesome6',
       icon: 'circle-user',
-      component: Profile,
+      component: Bio,
     },
   ];
 
@@ -97,7 +96,7 @@ const HomeBlank = ({navigation}) => {
         borderRadius: moderateScale(25),
         borderWidth: 4,
         borderColor: Theme.primary,
-        backgroundColor: !focused?Theme.primary:Theme.secondary,
+        backgroundColor: !focused?Theme.primary:Theme.red.secondary,
         justifyContent: 'center',
         alignItems: 'center',
       },
@@ -128,8 +127,8 @@ const HomeBlank = ({navigation}) => {
             ref={circleRef}
             style={{
               ...StyleSheet.absoluteFillObject,
-              backgroundColor:focused?Theme.secondary:Theme.primary,
-              borderColor:focused?Theme.primary:Theme.secondary,
+              backgroundColor:focused?Theme.red.secondary:Theme.primary,
+              borderColor:focused?Theme.primary:Theme.red.secondary,
               borderRadius: moderateScale(25),
             }}
           />

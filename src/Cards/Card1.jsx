@@ -16,7 +16,7 @@ import {Fonts} from '../utils/Fonts';
 const Card1 = ({item, photo}) => {
   return (
     <TouchableOpacity
-      activeOpacity={0.95}
+      activeOpacity={0.8}
       style={[
         styles.imageView,
         styles.cardContainer,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   aboutBar: {
     padding: horizontalScale(20),
-    backgroundColor: Theme.secondary,
+    backgroundColor: Theme.red.secondary,
     margin: horizontalScale(5),
     borderRadius: horizontalScale(10),
   },

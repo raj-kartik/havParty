@@ -10,7 +10,8 @@ const Planner = () => {
     <Container>
         <CustomHeader
           title="Planner"
-          primary={Theme.secondary}
+          primary={Theme.red.secondary}
+          isBack={false}
         />
     </Container>
   )

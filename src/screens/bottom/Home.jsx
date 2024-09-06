@@ -4,24 +4,24 @@ import Container from '../../Custom/Container';
 import CustomText from '../../Custom/CustomText';
 import CustomHeader from '../../Custom/CustomHeader';
 import ProfileCard from '../../Cards/ProfileCard';
-import { horizontalScale } from '../../Custom/Matrix';
-import { Fonts } from '../../utils/Fonts';
+import {horizontalScale} from '../../Custom/Matrix';
+import {Fonts} from '../../utils/Fonts';
 import NearbyPlace from '../stack/NearbyPlace';
 import FamousBar from '../stack/FamousBar';
 import LiveNow from '../stack/LiveNow';
-import { Theme } from '../../theme/Color';
+import {Theme} from '../../theme/Color';
 
 const Home = () => {
   return (
     <Container>
       <ProfileCard />
-      <ScrollView style={{marginHorizontal:horizontalScale(10)}} >
+      <ScrollView style={{marginHorizontal: horizontalScale(10)}}>
         <View>
-          <NearbyPlace/>
+          <NearbyPlace title="Nearby Place" />
         </View>
         <View>
-          <FamousBar/>
-          <LiveNow/>
+          <FamousBar />
+          <LiveNow />
         </View>
       </ScrollView>
     </Container>

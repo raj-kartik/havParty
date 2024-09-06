@@ -9,7 +9,7 @@ const Support = () => {
     <Container>
         <CustomHeader
             title="Support"
-            primary={Theme.secondary}
+            primary={Theme.red.secondary}
         />
     </Container>
   )

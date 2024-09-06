@@ -17,6 +17,8 @@ import {GlobalStyles} from '../GlobalStyles/GlobalStyles';
 import CustomButton from '../../Custom/CustomButton';
 import {horizontalScale, moderateScale} from '../../Custom/Matrix';
 import {Fonts} from '../../utils/Fonts';
+import CustomIcon from '../../Custom/CustomIcon';
+import {useSelector} from 'react-redux';
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -34,19 +36,29 @@ const userSchema = Yup.object().shape({
 });
 
 const PersonalInfo = () => {
-  const [isAdultAge, setIsAdultAge] = useState(false);
+  const userData = useSelector(state => state?.user?.user);
+  console.log('---- user data in --- personal info ----', userData);
+
+  const [isAdultAge, setIsAdultAge] = useState(userData?.user?.isAdult || false);
+  const [genderSelect, setgenderSelect] = useState(userData?.user?.gender || '');
+  const [isGender, setIsGender] = useState(false);
+
+  // use selector
   return (
     <Container>
-      <CustomHeader title="Personal Information" primary={Theme.secondary} />
+      <CustomHeader
+        title="Personal Information"
+        primary={Theme.red.secondary}
+      />
 
       <KeyboardAvoidingView style={{flex: 1, justifyContent: 'center'}}>
         <ScrollView>
           <Formik
             initialValues={{
-              email: '',
-              username: '',
-              name: '',
-              isAdult: '',
+              email: userData?.user?.email || '',
+              username: userData?.user?.username || '',
+              name: userData?.user?.name || '',
+              isAdult: true,
             }}
             validationSchema={userSchema}
             onSubmit={values => console.log(values)}>
@@ -78,6 +90,24 @@ const PersonalInfo = () => {
                   )}
                 </View>
 
+                {/* Name */}
+                <View style={styles.inputContainer}>
+                  <CustomText text="Name" />
+                  <TextInput
+                    placeholder="ABC"
+                    style={GlobalStyles.input}
+                    value={values.name}
+                    onChangeText={handleChange('name')}
+                    onBlur={handleBlur('name')}
+                  />
+                  {touched.name && errors.name && (
+                    <CustomText
+                      text={errors.name}
+                      textColor={Theme.error.primary}
+                    />
+                  )}
+                </View>
+
                 {/* Email */}
                 <View style={styles.inputContainer}>
                   <CustomText text="Email" />
@@ -98,19 +128,72 @@ const PersonalInfo = () => {
                   )}
                 </View>
 
-                {/* Name */}
-                <View style={styles.inputContainer}>
-                  <CustomText text="Name" />
-                  <TextInput
-                    placeholder="ABC"
-                    style={GlobalStyles.input}
-                    value={values.name}
-                    onChangeText={handleChange('name')}
-                    onBlur={handleBlur('name')}
-                  />
-                  {touched.name && errors.name && (
+                {/* Gender */}
+                <View
+                  style={{
+                    height: horizontalScale(100),
+                    zIndex: 9,
+                    backgroundColor: Theme.primary,
+                  }}>
+                  <CustomText text="Gender" />
+                  <TouchableOpacity
+                    onPress={() => setIsGender(!isGender)}
+                    activeOpacity={0.7}
+                    style={[
+                      GlobalStyles.input,
+                      GlobalStyles.row,
+                      {
+                        paddingVertical: moderateScale(15),
+                        paddingHorizontal: moderateScale(5),
+                        justifyContent: 'space-between',
+                      },
+                    ]}>
                     <CustomText
-                      text={errors.name}
+                      text={genderSelect ? genderSelect : 'Select Gender'}
+                    />
+                    <CustomIcon
+                      type="Entypo"
+                      name={!isGender ? 'chevron-down' : 'chevron-up'}
+                      color={Theme.icon.secondary}
+                    />
+                  </TouchableOpacity>
+                  {isGender && (
+                    <View
+                      style={{
+                        backgroundColor: Theme.primary,
+                        paddingVertical: horizontalScale(10),
+                      }}>
+                      <TouchableOpacity
+                        style={styles.optionView}
+                        onPress={() => {
+                          setgenderSelect('Male');
+                          setIsGender(false);
+                        }}>
+                        <CustomText text="Male" />
+                      </TouchableOpacity>
+
+                      <TouchableOpacity
+                        style={styles.optionView}
+                        onPress={() => {
+                          setgenderSelect('Female');
+                          setIsGender(false);
+                        }}>
+                        <CustomText text="Female" />
+                      </TouchableOpacity>
+
+                      <TouchableOpacity
+                        style={styles.optionView}
+                        onPress={() => {
+                          setgenderSelect('LGBTQA+');
+                          setIsGender(false);
+                        }}>
+                        <CustomText text="LGBTQA+" />
+                      </TouchableOpacity>
+                    </View>
+                  )}
+                  {!genderSelect && (
+                    <CustomText
+                      text={errors.gender}
                       textColor={Theme.error.primary}
                     />
                   )}
@@ -121,7 +204,14 @@ const PersonalInfo = () => {
                   <CustomText text="Are you adult?" />
                   <TouchableOpacity
                     onPress={() => setIsAdultAge(!isAdultAge)}
-                    style={styles.toggleButton}>
+                    style={[
+                      styles.toggleButton,
+                      {
+                        backgroundColor: isAdultAge
+                          ? Theme.red.secondary
+                          : Theme.black.hexa,
+                      },
+                    ]}>
                     {!isAdultAge ? (
                       <View
                         style={[
@@ -130,7 +220,7 @@ const PersonalInfo = () => {
                         ]}
                       />
                     ) : (
-                      <View style={[styles.switchButton]} />
+                      <View style={styles.switchButton} />
                     )}
 
                     {isAdultAge ? (
@@ -173,7 +263,7 @@ const styles = StyleSheet.create({
   toggleButton: {
     width: moderateScale(80),
     height: moderateScale(40),
-    backgroundColor: Theme.black.hexa,
+    // backgroundColor: Theme.black.hexa,
     borderRadius: horizontalScale(200),
     marginTop: horizontalScale(5),
     justifyContent: 'center',
@@ -181,15 +271,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderWidth:1,
-    borderColor:"#ccc"
+    borderWidth: 1,
+    borderColor: '#ccc',
   },
   switchButton: {
-    borderRadius: moderateScale(60),
+    borderRadius: moderateScale(100),
     width: moderateScale(35),
     height: moderateScale(35),
   },
   inputContainer: {
     height: horizontalScale(100),
+  },
+  optionView: {
+    borderWidth: 1,
+    borderColor: Theme.black.hexa,
+    padding: horizontalScale(10),
+    marginTop: horizontalScale(10),
+    borderRadius: horizontalScale(5),
+    backgroundColor: Theme.black.hexa,
   },
 });

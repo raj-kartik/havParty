@@ -42,9 +42,6 @@ const Search = () => {
           // numColumns={2}
           key={item => item.id}
           renderItem={({item})=>{
-
-            console.log("---- item in search -----", item);
-            
             return <Card1
               item={item}
               photo={item.photos}

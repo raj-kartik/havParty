@@ -100,8 +100,12 @@ const AboutBar = props => {
         />
       </View>
       <ScrollView
-        style={{marginHorizontal: horizontalScale(10)}}
+        style={{
+          marginHorizontal: moderateScale(10),
+          marginBottom: moderateScale(10),
+        }}
         showsVerticalScrollIndicator={false}>
+        {/* name */}
         <View style={styles.headingStyle}>
           <View>
             <CustomText
@@ -166,7 +170,7 @@ const AboutBar = props => {
               }}>
               <CustomIcon
                 type="FontAwesome6"
-                name={isViewMore?'xmark':'plus'}
+                name={isViewMore ? 'xmark' : 'plus'}
                 color={Theme.icon.secondary}
                 size={horizontalScale(20)}
               />
@@ -198,7 +202,35 @@ const AboutBar = props => {
             renderItem={renderMenu}
           />
         </View>
+
+        <View>
+          <CustomText
+            text="Maps"
+            fontFamily={Fonts.bold}
+            customStyle={{fontSize: 24}}
+          />
+          <View
+            style={{
+              width: screenWidth * 0.95,
+              height: screenHeight * 0.5,
+              backgroundColor: Theme.black.hexa,
+              marginVertical: moderateScale(5),
+              borderRadius: moderateScale(5),
+            }}
+          />
+        </View>
       </ScrollView>
+
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={styles.registerButton}
+        onPress={() => navigation.navigate('Booking')}>
+        <CustomText
+          text="Register Now"
+          fontFamily={Fonts.bold}
+          customStyle={{textAlign: 'center'}}
+        />
+      </TouchableOpacity>
     </Container>
   );
 };
@@ -220,7 +252,7 @@ const styles = StyleSheet.create({
     height: screenWidth * 0.25,
     padding: horizontalScale(15),
     justifyContent: 'center',
-    backgroundColor: Theme.secondary,
+    backgroundColor: Theme.red.secondary,
     marginVertical: horizontalScale(20),
     marginHorizontal: horizontalScale(5),
     borderRadius: horizontalScale(10),
@@ -233,7 +265,7 @@ const styles = StyleSheet.create({
   favView: {
     alignItems: 'center',
     marginHorizontal: horizontalScale(10),
-    backgroundColor: Theme.secondary,
+    backgroundColor: Theme.red.secondary,
     width: horizontalScale(30),
     height: horizontalScale(30),
     justifyContent: 'center',
@@ -254,9 +286,20 @@ const styles = StyleSheet.create({
     height: moderateScale(50),
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal:horizontalScale(5),
+    marginHorizontal: horizontalScale(5),
     padding: horizontalScale(2),
     backgroundColor: Theme.primary,
     borderRadius: horizontalScale(100),
+  },
+  registerButton: {
+    width: horizontalScale(80),
+    height: horizontalScale(80),
+    borderRadius: horizontalScale(150),
+    backgroundColor: Theme.red.secondary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: horizontalScale(20),
+    right: horizontalScale(20),
   },
 });

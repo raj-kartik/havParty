@@ -15,10 +15,10 @@ export const ClubData = [
             perPerson:2000,
             couple:1500,
         },
-        discount:{
-            perPerson:1750,
-            couple:1250
-        },
+        // discount:{
+        //     perPerson:1750,
+        //     couple:1250
+        // },
         offers:[
             {id:1,offer:"20% off for regular out regular visitors"},
             {id:2,offer:"20% off on Tuesday, Wednesday, Thursday"}

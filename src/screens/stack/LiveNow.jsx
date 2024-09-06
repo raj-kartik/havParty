@@ -8,7 +8,7 @@ const LiveNow = () => {
   return (
     <View style={{marginTop:horizontalScale(20)}} >
       <CustomText
-        text="Vibe" 
+        text="Events" 
         fontFamily={Fonts.bold}
         customStyle={{fontSize: 18}}
         textColor={Theme.text.tertiary}

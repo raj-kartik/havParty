@@ -13,5 +13,9 @@ export const GlobalStyles = StyleSheet.create({
         borderColor:Theme.text.tertiary,
         borderRadius:moderateScale(5),
         fontFamily:Fonts.medium
+    },
+    center:{
+        justifyContent:"center",
+        alignItems:"center"
     }
 })

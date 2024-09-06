@@ -21,7 +21,7 @@ const FamousBar = () => {
   return (
     <View style={{marginTop: horizontalScale(20)}}>
       <CustomText
-        text="Top Venue"
+        text="Vibes"
         fontFamily={Fonts.bold}
         customStyle={{fontSize: 18}}
         textColor={Theme.text.tertiary}

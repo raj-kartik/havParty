@@ -10,7 +10,8 @@ export const FavData = [
         state:"Delhi",
         visited:3,
         photo:Images.App1,
-        price:1270
+        price:1270,
+        offer:"20% off on Monday,Wednesday,Friday"
     },
 
     {
@@ -21,7 +22,8 @@ export const FavData = [
         state:"Delhi",
         visited:3,
         photo:Images.App2,
-        price:1270
+        price:1270,
+        offer:"20% off on Monday,Wednesday,Friday"
     },
 
     {
@@ -32,6 +34,7 @@ export const FavData = [
         state:"Delhi",
         visited:3,
         photo:Images.App3,
-        price:1270
+        price:1270,
+        offer:"20% off on Monday,Wednesday,Friday"
     },
 ]

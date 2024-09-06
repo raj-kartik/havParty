@@ -11,7 +11,7 @@ const CustomButton = ({
   onPress,
   title,
   customStyle = {},
-  textColor = '#000',
+  textColor = '#fff',
   textStyle = {},
   iconType,
   iconName,
@@ -24,7 +24,10 @@ const CustomButton = ({
   const colors = Theme;
   return (
     <LinearGradient
-      colors={[Theme.black.hexa, Theme.secondary]}
+      colors={[
+        Theme.black.hexa,
+        !disabled ? Theme.red.secondary : Theme.black.hexa,
+      ]}
       style={[customStyle]}
       start={{x: 0.5, y: -0.1}}
       end={{x: 0.5, y: 1.5}}>

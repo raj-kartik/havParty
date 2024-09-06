@@ -3,9 +3,9 @@ import React from 'react';
 import {horizontalScale} from '../../Custom/Matrix';
 import {Theme} from '../../theme/Color';
 import CustomText from '../../Custom/CustomText';
-import { Fonts } from '../../utils/Fonts';
+import {Fonts} from '../../utils/Fonts';
 
-const NearbyPlace = () => {
+const NearbyPlace = ({title, data}) => {
   const nearby = [
     {id: 1, place: 'Rajendra Place'},
     {id: 2, place: 'Rajendra Place'},
@@ -14,23 +14,33 @@ const NearbyPlace = () => {
   ];
   const renderItem = ({item}) => {
     return (
-      <View style={{padding: horizontalScale(10), alignItems: 'center'}}>
+      <View
+        style={{
+          padding: horizontalScale(10),
+          alignItems: 'center',
+          width: horizontalScale(90),
+          height: horizontalScale(100),
+        }}>
         <View
           style={{
             width: horizontalScale(50),
             height: horizontalScale(50),
             borderRadius: horizontalScale(100),
-            backgroundColor: Theme.secondary,
+            backgroundColor: Theme.black.hexa,
           }}
         />
-        <CustomText text={item.place} textColor={Theme.text.primary} />
+        <CustomText
+          text={item.place}
+          textColor={Theme.text.secondary}
+          customStyle={{textAlign: 'center'}}
+        />
       </View>
     );
   };
   return (
-    <View style={{marginTop:horizontalScale(20)}} >
+    <View style={{marginTop: horizontalScale(20)}}>
       <CustomText
-        text="Nearby you"
+        text={title}
         fontFamily={Fonts.bold}
         customStyle={{fontSize: 18}}
         textColor={Theme.text.tertiary}

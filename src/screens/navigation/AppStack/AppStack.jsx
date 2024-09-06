@@ -11,6 +11,12 @@ import Notification from '../../Profile/Notification'
 import Support from '../../Profile/Support'
 import Contact from '../../Profile/Contact'
 import Searching from '../../stack/Searching'
+import Transactions from '../../Profile/Transactions'
+import Booking from '../../stack/Booking'
+import Profile from '../../ExtraScreens/Profile'
+import Message from '../../stack/Message'
+import Connection from '../../stack/Connection'
+import SplashScreen from '../../Splash/SplashScreen'
 
 const AppStack = () => {
 
@@ -19,6 +25,7 @@ const AppStack = () => {
   return (
     <Container>
       <Stack.Navigator screenOptions={{headerShown:false}} >
+        <Stack.Screen name='Splash' component={SplashScreen} />
         <Stack.Screen name='HomeBlank' component={HomeBlank} />
         <Stack.Screen name='AboutBar' component={AboutBar} />
         <Stack.Screen name='Menu' component={Menu} />
@@ -29,9 +36,18 @@ const AppStack = () => {
         <Stack.Screen name='Notification' component={Notification} />
         <Stack.Screen name='Support' component={Support} />
         <Stack.Screen name='ContactUs' component={Contact} />
+        <Stack.Screen name='Transaction' component={Transactions} />
+        <Stack.Screen name='Booking' component={Booking} />
+
+        <Stack.Screen name='ProfileBlank' component={Profile} />
+        <Stack.Screen name='Message' component={Message} />
+        <Stack.Screen name='Connect' component={Connection} />
 
         {/* search */}
         <Stack.Screen name='Searching' component={Searching} />
+
+        {/* log out */}
+        
 
       </Stack.Navigator>
     </Container>
