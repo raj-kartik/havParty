@@ -17,5 +17,10 @@ export const GlobalStyles = StyleSheet.create({
     center:{
         justifyContent:"center",
         alignItems:"center"
+    },
+    between:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center"
     }
 })

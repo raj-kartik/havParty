@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   container: {
     height: screenHeight * 0.3,
     width: screenWidth * 0.9,
-    margin: moderateScale(10),
+    margin: moderateScale(5),
     borderWidth: 1,
     borderColor: Theme.black.hexa,
     borderRadius: horizontalScale(5),

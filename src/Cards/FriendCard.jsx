@@ -15,7 +15,7 @@ import CustomIcon from '../Custom/CustomIcon';
 
 const FriendCard = ({item}) => {
   return (
-    <TouchableOpacity style={[styles.container]}>
+    <TouchableOpacity activeOpacity={0.6} style={[styles.container]}>
       <LinearGradient
         colors={[Theme.secondary, Theme.black.primary, Theme.black.hexa]}
         style={[

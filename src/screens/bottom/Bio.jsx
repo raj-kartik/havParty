@@ -1,4 +1,10 @@
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import Container from '../../Custom/Container';
 import CustomHeader from '../../Custom/CustomHeader';
@@ -12,8 +18,10 @@ import {useNavigation} from '@react-navigation/native';
 import Username from '../../Component/Username';
 import ProfileCard from '../../Cards/ProfileCard';
 import UsersCard from '../../Cards/UsersCard';
-import NearbyPlace from '../stack/NearbyPlace';
-import FamousBar from '../stack/FamousBar';
+import NearbyPlace from '../stack/NearBy/NearbyPlace';
+import FamousBar from '../stack/Famous/FamousBar';
+import NearbyPlaceCard from '../stack/NearBy/NearByCard';
+import FamousCard from '../stack/Famous/FamousCard';
 
 const Bio = () => {
   const navigation = useNavigation();
@@ -22,10 +30,10 @@ const Bio = () => {
     <Container>
       <ScrollView style={{marginHorizontal: horizontalScale(10)}}>
         <Username />
-        <UsersCard/>
-        <NearbyPlace title="Visited Place" />
-        <FamousBar/>
-      </ScrollView> 
+        <UsersCard />
+        <NearbyPlaceCard title="Visited Places" />
+        <FamousCard title="Visited Bars" />
+      </ScrollView>
     </Container>
   );
 };

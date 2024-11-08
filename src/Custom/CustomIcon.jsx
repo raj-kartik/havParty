@@ -36,7 +36,7 @@ const iconSets = {
   AntDesign
 };
 
-const CustomIcon = ({type, name, size = 24, color = '#000', customStyle}) => {
+const CustomIcon = ({type, name, size = 24, color = '#fff', customStyle}) => {
   const IconComponent = iconSets[type];
 
   if (!IconComponent) {

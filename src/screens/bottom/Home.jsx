@@ -1,15 +1,13 @@
 import {StyleSheet, Text, View, ScrollView, FlatList} from 'react-native';
 import React from 'react';
 import Container from '../../Custom/Container';
-import CustomText from '../../Custom/CustomText';
-import CustomHeader from '../../Custom/CustomHeader';
 import ProfileCard from '../../Cards/ProfileCard';
 import {horizontalScale} from '../../Custom/Matrix';
-import {Fonts} from '../../utils/Fonts';
-import NearbyPlace from '../stack/NearbyPlace';
-import FamousBar from '../stack/FamousBar';
-import LiveNow from '../stack/LiveNow';
-import {Theme} from '../../theme/Color';
+import FamousBar from '../stack/Famous/FamousBar';
+import LiveNow from '../stack/LiveNow/LiveNow';
+import NearbyPlaceCard from '../stack/NearBy/NearByCard';
+import FamousCard from '../stack/Famous/FamousCard';
+import LiveCard from '../stack/LiveNow/LiveCard';
 
 const Home = () => {
   return (
@@ -17,12 +15,12 @@ const Home = () => {
       <ProfileCard />
       <ScrollView style={{marginHorizontal: horizontalScale(10)}}>
         <View>
-          <NearbyPlace title="Nearby Place" />
+          <NearbyPlaceCard title="Nearby Place" />
         </View>
         <View>
-          <FamousBar />
-          <LiveNow />
+          <FamousCard title="Vibes" />
         </View>
+        <LiveCard />
       </ScrollView>
     </Container>
   );

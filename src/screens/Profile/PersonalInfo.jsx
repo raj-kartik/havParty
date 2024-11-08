@@ -39,8 +39,12 @@ const PersonalInfo = () => {
   const userData = useSelector(state => state?.user?.user);
   console.log('---- user data in --- personal info ----', userData);
 
-  const [isAdultAge, setIsAdultAge] = useState(userData?.user?.isAdult || false);
-  const [genderSelect, setgenderSelect] = useState(userData?.user?.gender || '');
+  const [isAdultAge, setIsAdultAge] = useState(
+    userData?.user?.isAdult || false,
+  );
+  const [genderSelect, setgenderSelect] = useState(
+    userData?.user?.gender || '',
+  );
   const [isGender, setIsGender] = useState(false);
 
   // use selector
@@ -216,11 +220,20 @@ const PersonalInfo = () => {
                       <View
                         style={[
                           styles.switchButton,
-                          {backgroundColor: Theme.black.secondary},
+                          {
+                            backgroundColor: Theme.black.secondary,
+                            borderRadius: moderateScale(100),
+                            width: horizontalScale(35),
+                            height: horizontalScale(35),
+                          },
                         ]}
                       />
                     ) : (
-                      <View style={styles.switchButton} />
+                      <View
+                        style={[
+                          styles.switchButton,
+                        ]}
+                      />
                     )}
 
                     {isAdultAge ? (
@@ -275,9 +288,9 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
   },
   switchButton: {
-    borderRadius: moderateScale(100),
-    width: moderateScale(35),
-    height: moderateScale(35),
+    borderRadius: horizontalScale(50),
+    width: horizontalScale(35),
+    height: horizontalScale(35),
   },
   inputContainer: {
     height: horizontalScale(100),

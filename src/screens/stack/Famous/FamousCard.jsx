@@ -7,34 +7,44 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import CustomText from '../../Custom/CustomText';
-import {Fonts} from '../../utils/Fonts';
-import {horizontalScale, moderateScale, screenWidth} from '../../Custom/Matrix';
-import {Theme} from '../../theme/Color';
-import {FlipInEasyX} from 'react-native-reanimated';
-import {Images} from '../../utils/Images';
+import CustomText from '../../../Custom/CustomText';
+import {Fonts} from '../../../utils/Fonts';
+import {
+  horizontalScale,
+  moderateScale,
+  screenWidth,
+} from '../../../Custom/Matrix';
+import {Theme} from '../../../theme/Color';
 import LinearGradient from 'react-native-linear-gradient';
-import {ClubData} from '../../Data/ClubData';
-import { useNavigation } from '@react-navigation/native';
-const FamousBar = () => {
-    const navigation = useNavigation();
+import {ClubData} from '../../../Data/ClubData';
+import {useNavigation} from '@react-navigation/native';
+import {GlobalStyles} from '../../GlobalStyles/GlobalStyles';
+const FamousCard = ({title}) => {
+  const navigation = useNavigation();
   return (
     <View style={{marginTop: horizontalScale(20)}}>
-      <CustomText
-        text="Vibes"
-        fontFamily={Fonts.bold}
-        customStyle={{fontSize: 18}}
-        textColor={Theme.text.tertiary}
-      />
+      <View style={[GlobalStyles.between]}>
+        <CustomText
+          text={title}
+          fontFamily={Fonts.bold}
+          customStyle={{fontSize: 18}}
+          textColor={Theme.text.tertiary}
+        />
+        <TouchableOpacity onPress={()=>navigation.navigate('FamousBar')}  activeOpacity={0.5}>
+          <CustomText text="View all" customStyle={{fontSize: 12}} />
+        </TouchableOpacity>
+      </View>
       <FlatList
         bounces={false}
         bouncesZoom={false}
         showsHorizontalScrollIndicator={false}
-        data={ClubData.slice(0,3)}
+        data={ClubData.slice(0, 3)}
         horizontal
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <TouchableOpacity activeOpacity={1} onPress={()=>navigation.navigate('AboutBar',{bar:item})} >
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => navigation.navigate('AboutBar', {bar: item})}>
             <ImageBackground
               style={styles.visitContainer}
               source={item.photos?.[0]}
@@ -66,7 +76,7 @@ const FamousBar = () => {
   );
 };
 
-export default FamousBar;
+export default FamousCard;
 
 const styles = StyleSheet.create({
   visitContainer: {

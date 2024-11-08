@@ -1,4 +1,4 @@
-export const API_URL = "https://hav-party-server.vercel.app/";
+export const API_URL = "https://hav-party-server.vercel.app/api/v1/";
 
 // auth
 export const SIGN_UP = "auth/signup"

@@ -4,7 +4,7 @@ import Container from '../../Custom/Container';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../bottom/Home';
 import Search from '../bottom/Search';
-import Planner from '../bottom/Planner';
+import Events from '../bottom/Events';
 import Favorite from '../bottom/Favorite';
 import CustomIcon from '../../Custom/CustomIcon';
 import {horizontalScale, moderateScale, screenWidth, verticalScale} from '../../Custom/Matrix';
@@ -34,11 +34,11 @@ const HomeBlank = ({navigation}) => {
 
     {
       id: 3,
-      route: 'Planner',
-      label: 'Planner',
+      route: 'Events',
+      label: 'Events',
       type: 'MaterialCommunityIcons',
       icon: 'party-popper',
-      component: Planner,
+      component: Events,
     },
 
     {

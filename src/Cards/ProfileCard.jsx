@@ -10,6 +10,7 @@ import CustomIcon from '../Custom/CustomIcon';
 import {GlobalStyles} from '../screens/GlobalStyles/GlobalStyles';
 import {useNavigation} from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { Neomorph } from 'react-native-neomorph-shadows';
 
 const ProfileCard = () => {
   const navigation = useNavigation();

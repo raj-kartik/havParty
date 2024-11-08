@@ -1,11 +1,14 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {horizontalScale} from '../../Custom/Matrix';
-import {Theme} from '../../theme/Color';
-import CustomText from '../../Custom/CustomText';
-import {Fonts} from '../../utils/Fonts';
+import {horizontalScale} from '../../../Custom/Matrix';
+import {Theme} from '../../../theme/Color';
+import CustomText from '../../../Custom/CustomText';
+import {Fonts} from '../../../utils/Fonts';
+import {GlobalStyles} from '../../GlobalStyles/GlobalStyles';
+import { useNavigation } from '@react-navigation/native';
 
-const NearbyPlace = ({title, data}) => {
+const NearbyPlaceCard = ({title, data}) => {
+    const navigation = useNavigation();
   const nearby = [
     {id: 1, place: 'Rajendra Place'},
     {id: 2, place: 'Rajendra Place'},
@@ -39,12 +42,17 @@ const NearbyPlace = ({title, data}) => {
   };
   return (
     <View style={{marginTop: horizontalScale(20)}}>
-      <CustomText
-        text={title}
-        fontFamily={Fonts.bold}
-        customStyle={{fontSize: 18}}
-        textColor={Theme.text.tertiary}
-      />
+      <View style={[GlobalStyles.between]}>
+        <CustomText
+          text={title}
+          fontFamily={Fonts.bold}
+          customStyle={{fontSize: 18}}
+          textColor={Theme.text.tertiary}
+        />
+        <TouchableOpacity onPress={()=>navigation.navigate('NearbyPlace')}  activeOpacity={0.5}>
+          <CustomText text="View all" customStyle={{fontSize: 12}} />
+        </TouchableOpacity>
+      </View>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -56,6 +64,6 @@ const NearbyPlace = ({title, data}) => {
   );
 };
 
-export default NearbyPlace;
+export default NearbyPlaceCard;
 
 const styles = StyleSheet.create({});
